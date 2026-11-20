@@ -5,7 +5,7 @@ from .models import *
 from .schemas import *
 from .security import current,allow
 from .common import *
-from . import entrance_service as entrance,proposal_service as proposal,publication_service as publication,directory_service as directory
+from . import entrance_service as entrance,proposal_service as proposal,publication_service as publication,directory_service as directory,qc_service as qc
 router=APIRouter()
 def change(u,action,fn,supervisor=False):
  allow(u,*(['supervisor'] if supervisor else ['operator','supervisor']))
@@ -51,3 +51,12 @@ def lookup(id:int,u=Depends(current)):
  with Session() as s:return directory.resolve_root(s,id)
 @router.post('/redirects/{id}/rollback')
 def rollback(id:int,d:ReasonIn,u=Depends(current)):return change(u,'回滚目录',lambda s:directory.rollback(s,id,d.model_dump()),True)
+@router.get('/qc')
+def qcreport(u=Depends(current)):
+ with Session() as s:return qc.report(s)
+@router.post('/qc/rounds')
+def qccreate(d:QcRoundIn,u=Depends(current)):return change(u,'创建质检抽查',lambda s:qc.create_round(s,d.model_dump()),True)
+@router.post('/qc/rounds/{id}/close')
+def qcclose(id:int,u=Depends(current)):return change(u,'封存质检抽查',lambda s:qc.close(s,id),True)
+@router.post('/qc/pairs/{id}/votes')
+def qcvote(id:int,d:QcVoteIn,u=Depends(current)):return change(u,'提交同址判定',lambda s:qc.vote(s,id,d.model_dump(),u),True)

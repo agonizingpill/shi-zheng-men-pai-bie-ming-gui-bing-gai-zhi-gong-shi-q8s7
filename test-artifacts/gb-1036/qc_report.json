@@ -1,0 +1,736 @@
+{
+ "rounds": [
+  {
+   "id": 1,
+   "code": "QC-1",
+   "run_id": 1,
+   "seed": 42,
+   "fraction": 0.5,
+   "state": "closed",
+   "created": "2026-11-18T09:00:00",
+   "frame": {
+    "河滨路": {
+     "unrecommended": {
+      "population": 1,
+      "sampled": 1
+     }
+    },
+    "长桥路": {
+     "recommended": {
+      "population": 3,
+      "sampled": 2
+     }
+    },
+    "青石街": {
+     "recommended": {
+      "population": 3,
+      "sampled": 2
+     }
+    }
+   },
+   "pairs": [
+    {
+     "id": 1,
+     "street": "河滨路",
+     "number": 5,
+     "state": "decided",
+     "source": {
+      "id": 9,
+      "code": "HB-005-A",
+      "street": "河滨路",
+      "number": 5,
+      "label": "河滨路5号东门",
+      "lat": 31.23,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 9,
+        "text": "河滨路5号东门",
+        "evidence": [
+         {
+          "reference": "照片-HB-005-A",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "target": {
+      "id": 10,
+      "code": "HB-005-B",
+      "street": "河滨路",
+      "number": 5,
+      "label": "临河伍号旧宅",
+      "lat": 31.2301,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 10,
+        "text": "临河伍号旧宅",
+        "evidence": [
+         {
+          "reference": "照片-HB-005-B",
+          "description": "地籍图载临河伍号旧宅即现河滨路5号院落，门牌照片核对老北门位置"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 2,
+     "verdict": "same",
+     "recommended": 0,
+     "similarity": 0.060618,
+     "weight": 1.0,
+     "votes": [
+      {
+       "adjudicator": "supervisor@changqiao.local",
+       "verdict": "same",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      },
+      {
+       "adjudicator": "supervisor2@changqiao.local",
+       "verdict": "same",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "street": "长桥路",
+     "number": 18,
+     "state": "decided",
+     "source": {
+      "id": 2,
+      "code": "CQ-018-B",
+      "street": "长桥路",
+      "number": 18,
+      "label": "长桥路十八号旧门牌",
+      "lat": 31.2101,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 2,
+        "text": "长桥路十八号旧门牌",
+        "evidence": [
+         {
+          "reference": "照片-CQ-018-B",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "target": {
+      "id": 4,
+      "code": "CQ-018-C",
+      "street": "长桥路",
+      "number": 18,
+      "label": "长桥路18号南入口",
+      "lat": 31.2102,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 4,
+        "text": "长桥路18号南入口",
+        "evidence": [
+         {
+          "reference": "照片-CQ-018-C",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 3,
+     "verdict": "same",
+     "recommended": 1,
+     "similarity": 0.480513,
+     "weight": 1.5,
+     "votes": [
+      {
+       "adjudicator": "supervisor@changqiao.local",
+       "verdict": "different",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      },
+      {
+       "adjudicator": "supervisor2@changqiao.local",
+       "verdict": "same",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      },
+      {
+       "adjudicator": "supervisor3@changqiao.local",
+       "verdict": "same",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      }
+     ]
+    },
+    {
+     "id": 3,
+     "street": "长桥路",
+     "number": 18,
+     "state": "decided",
+     "source": {
+      "id": 1,
+      "code": "CQ-018-A",
+      "street": "长桥路",
+      "number": 18,
+      "label": "长桥路18号正门",
+      "lat": 31.21,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 1,
+        "text": "长桥路18号正门",
+        "evidence": [
+         {
+          "reference": "照片-CQ-018-A",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       },
+       {
+        "id": 11,
+        "text": "长桥路18号正门传达室",
+        "evidence": []
+       }
+      ]
+     },
+     "target": {
+      "id": 2,
+      "code": "CQ-018-B",
+      "street": "长桥路",
+      "number": 18,
+      "label": "长桥路十八号旧门牌",
+      "lat": 31.2101,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 2,
+        "text": "长桥路十八号旧门牌",
+        "evidence": [
+         {
+          "reference": "照片-CQ-018-B",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 2,
+     "verdict": "different",
+     "recommended": 1,
+     "similarity": 0.600059,
+     "weight": 1.5,
+     "votes": [
+      {
+       "adjudicator": "supervisor@changqiao.local",
+       "verdict": "different",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      },
+      {
+       "adjudicator": "supervisor2@changqiao.local",
+       "verdict": "different",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      }
+     ]
+    },
+    {
+     "id": 4,
+     "street": "青石街",
+     "number": 7,
+     "state": "decided",
+     "source": {
+      "id": 5,
+      "code": "QS-007-A",
+      "street": "青石街",
+      "number": 7,
+      "label": "青石街7号正门",
+      "lat": 31.22,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 5,
+        "text": "青石街7号正门",
+        "evidence": [
+         {
+          "reference": "照片-QS-007-A",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "target": {
+      "id": 6,
+      "code": "QS-007-B",
+      "street": "青石街",
+      "number": 7,
+      "label": "青石街七号旧门牌",
+      "lat": 31.2201,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 6,
+        "text": "青石街七号旧门牌",
+        "evidence": [
+         {
+          "reference": "照片-QS-007-B",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 3,
+     "verdict": "different",
+     "recommended": 1,
+     "similarity": 0.549542,
+     "weight": 1.5,
+     "votes": [
+      {
+       "adjudicator": "supervisor@changqiao.local",
+       "verdict": "same",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      },
+      {
+       "adjudicator": "supervisor2@changqiao.local",
+       "verdict": "different",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      },
+      {
+       "adjudicator": "supervisor3@changqiao.local",
+       "verdict": "different",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      }
+     ]
+    },
+    {
+     "id": 5,
+     "street": "青石街",
+     "number": 7,
+     "state": "decided",
+     "source": {
+      "id": 5,
+      "code": "QS-007-A",
+      "street": "青石街",
+      "number": 7,
+      "label": "青石街7号正门",
+      "lat": 31.22,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 5,
+        "text": "青石街7号正门",
+        "evidence": [
+         {
+          "reference": "照片-QS-007-A",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "target": {
+      "id": 7,
+      "code": "QS-007-C",
+      "street": "青石街",
+      "number": 7,
+      "label": "青石街7号西侧门",
+      "lat": 31.2202,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 7,
+        "text": "青石街7号西侧门",
+        "evidence": [
+         {
+          "reference": "照片-QS-007-C",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 2,
+     "verdict": "same",
+     "recommended": 1,
+     "similarity": 0.502137,
+     "weight": 1.5,
+     "votes": [
+      {
+       "adjudicator": "supervisor@changqiao.local",
+       "verdict": "same",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      },
+      {
+       "adjudicator": "supervisor2@changqiao.local",
+       "verdict": "same",
+       "note": "按计划书证判定",
+       "created": "2026-11-18T09:00:00"
+      }
+     ]
+    }
+   ],
+   "progress": {
+    "recommended": {
+     "sampled": 4,
+     "decided": 4,
+     "arbitration": 0,
+     "pending": 0
+    },
+    "unrecommended": {
+     "sampled": 1,
+     "decided": 1,
+     "arbitration": 0,
+     "pending": 0
+    }
+   },
+   "estimates": {
+    "wrong_merge": {
+     "population": 6,
+     "sampled": 4,
+     "decided": 4,
+     "unfinished": 0,
+     "error_pairs": 2,
+     "weighted_errors": 3.0,
+     "rate": 0.5
+    },
+    "missed_merge": {
+     "population": 1,
+     "sampled": 1,
+     "decided": 1,
+     "unfinished": 0,
+     "error_pairs": 1,
+     "weighted_errors": 1.0,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "id": 2,
+   "code": "QC-2",
+   "run_id": 1,
+   "seed": 42,
+   "fraction": 0.5,
+   "state": "collecting",
+   "created": "2026-11-18T09:00:00",
+   "frame": {
+    "河滨路": {
+     "unrecommended": {
+      "population": 1,
+      "sampled": 1
+     }
+    },
+    "长桥路": {
+     "recommended": {
+      "population": 3,
+      "sampled": 2
+     }
+    },
+    "青石街": {
+     "recommended": {
+      "population": 3,
+      "sampled": 2
+     }
+    }
+   },
+   "pairs": [
+    {
+     "id": 6,
+     "street": "河滨路",
+     "number": 5,
+     "state": "pending",
+     "source": {
+      "id": 9,
+      "code": "HB-005-A",
+      "street": "河滨路",
+      "number": 5,
+      "label": "河滨路5号东门",
+      "lat": 31.23,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 9,
+        "text": "河滨路5号东门",
+        "evidence": [
+         {
+          "reference": "照片-HB-005-A",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "target": {
+      "id": 10,
+      "code": "HB-005-B",
+      "street": "河滨路",
+      "number": 5,
+      "label": "临河伍号旧宅",
+      "lat": 31.2301,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 10,
+        "text": "临河伍号旧宅",
+        "evidence": [
+         {
+          "reference": "照片-HB-005-B",
+          "description": "地籍图载临河伍号旧宅即现河滨路5号院落，门牌照片核对老北门位置"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 0
+    },
+    {
+     "id": 7,
+     "street": "长桥路",
+     "number": 18,
+     "state": "pending",
+     "source": {
+      "id": 2,
+      "code": "CQ-018-B",
+      "street": "长桥路",
+      "number": 18,
+      "label": "长桥路十八号旧门牌",
+      "lat": 31.2101,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 2,
+        "text": "长桥路十八号旧门牌",
+        "evidence": [
+         {
+          "reference": "照片-CQ-018-B",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "target": {
+      "id": 4,
+      "code": "CQ-018-C",
+      "street": "长桥路",
+      "number": 18,
+      "label": "长桥路18号南入口",
+      "lat": 31.2102,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 4,
+        "text": "长桥路18号南入口",
+        "evidence": [
+         {
+          "reference": "照片-CQ-018-C",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 0
+    },
+    {
+     "id": 8,
+     "street": "长桥路",
+     "number": 18,
+     "state": "pending",
+     "source": {
+      "id": 1,
+      "code": "CQ-018-A",
+      "street": "长桥路",
+      "number": 18,
+      "label": "长桥路18号正门",
+      "lat": 31.21,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 1,
+        "text": "长桥路18号正门",
+        "evidence": [
+         {
+          "reference": "照片-CQ-018-A",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       },
+       {
+        "id": 11,
+        "text": "长桥路18号正门传达室",
+        "evidence": []
+       }
+      ]
+     },
+     "target": {
+      "id": 2,
+      "code": "CQ-018-B",
+      "street": "长桥路",
+      "number": 18,
+      "label": "长桥路十八号旧门牌",
+      "lat": 31.2101,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 2,
+        "text": "长桥路十八号旧门牌",
+        "evidence": [
+         {
+          "reference": "照片-CQ-018-B",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 0
+    },
+    {
+     "id": 9,
+     "street": "青石街",
+     "number": 7,
+     "state": "pending",
+     "source": {
+      "id": 5,
+      "code": "QS-007-A",
+      "street": "青石街",
+      "number": 7,
+      "label": "青石街7号正门",
+      "lat": 31.22,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 5,
+        "text": "青石街7号正门",
+        "evidence": [
+         {
+          "reference": "照片-QS-007-A",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "target": {
+      "id": 6,
+      "code": "QS-007-B",
+      "street": "青石街",
+      "number": 7,
+      "label": "青石街七号旧门牌",
+      "lat": 31.2201,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 6,
+        "text": "青石街七号旧门牌",
+        "evidence": [
+         {
+          "reference": "照片-QS-007-B",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 0
+    },
+    {
+     "id": 10,
+     "street": "青石街",
+     "number": 7,
+     "state": "pending",
+     "source": {
+      "id": 5,
+      "code": "QS-007-A",
+      "street": "青石街",
+      "number": 7,
+      "label": "青石街7号正门",
+      "lat": 31.22,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 5,
+        "text": "青石街7号正门",
+        "evidence": [
+         {
+          "reference": "照片-QS-007-A",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "target": {
+      "id": 7,
+      "code": "QS-007-C",
+      "street": "青石街",
+      "number": 7,
+      "label": "青石街7号西侧门",
+      "lat": 31.2202,
+      "lng": 121.48,
+      "aliases": [
+       {
+        "id": 7,
+        "text": "青石街7号西侧门",
+        "evidence": [
+         {
+          "reference": "照片-QS-007-C",
+          "description": "2026年11月现场门牌照片与老地籍图位置核验说明"
+         }
+        ]
+       }
+      ]
+     },
+     "vote_count": 0
+    }
+   ],
+   "progress": {
+    "recommended": {
+     "sampled": 4,
+     "decided": 0,
+     "arbitration": 0,
+     "pending": 4
+    },
+    "unrecommended": {
+     "sampled": 1,
+     "decided": 0,
+     "arbitration": 0,
+     "pending": 1
+    }
+   },
+   "estimates": {
+    "wrong_merge": {
+     "population": 6,
+     "sampled": 4,
+     "decided": 0,
+     "unfinished": 4,
+     "error_pairs": 0,
+     "weighted_errors": 0,
+     "rate": null
+    },
+    "missed_merge": {
+     "population": 1,
+     "sampled": 1,
+     "decided": 0,
+     "unfinished": 1,
+     "error_pairs": 0,
+     "weighted_errors": 0,
+     "rate": null
+    }
+   }
+  }
+ ]
+}

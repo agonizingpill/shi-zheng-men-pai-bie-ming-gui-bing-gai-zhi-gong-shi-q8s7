@@ -1,6 +1,6 @@
 # 市政门牌别名归并与改址公示
 
-长桥街道地址办有4位采集员、2位核定员，过去用地籍图、门牌照片和Excel分别登记，历史“十八号”与现“18号”重复建档；同街81号又容易被误合；居民意见与公示期限靠口头交接。本项目把实地入口、旧名书证、归并核验、公示和目录映射贯通。上游为现场采集与住户意见，下游为街道服务窗口查询到的正式入口。全部数据模拟，不接入外部政务目录。
+长桥街道地址办有4位采集员、3位核定员，过去用地籍图、门牌照片和Excel分别登记，历史“十八号”与现“18号”重复建档；同街81号又容易被误合；居民意见与公示期限靠口头交接。本项目把实地入口、旧名书证、归并核验、归并质检、公示和目录映射贯通。上游为现场采集与住户意见，下游为街道服务窗口查询到的正式入口。全部数据模拟，不接入外部政务目录。
 
 ## 快速启动
 
@@ -9,17 +9,17 @@ cp .env.example .env
 docker compose up -d --build --wait
 ```
 
-前端 http://localhost:18235，API http://localhost:19235/docs，MySQL localhost:17735。Compose 恰好 frontend/backend/worker/db/redis 五服务，各有健康检查，MySQL8采用READ COMMITTED。演示账号 `operator@changqiao.local`、`supervisor@changqiao.local`、`viewer@changqiao.local`，口令 `Address2026!`。
+前端 http://localhost:18235，API http://localhost:19235/docs，MySQL localhost:17735。Compose 恰好 frontend/backend/worker/db/redis 五服务，各有健康检查，MySQL8采用READ COMMITTED。演示账号 `operator@changqiao.local`、`supervisor@changqiao.local`、`supervisor2@changqiao.local`、`supervisor3@changqiao.local`、`viewer@changqiao.local`，口令 `Address2026!`。
 
 | 角色 | 页面与权限 | 典型动作 |
 |---|---|---|
-| operator | 六页可读，入口/别名/证据/候选/提案/异议可写 | 现场采集旧门牌与提出归并 |
-| supervisor | 全部日常动作及复核、公示、生效、回滚、演示时钟 | 签核异议和更新服务目录 |
-| viewer | 六页只读，后端所有写接口拒绝 | 查看公示期限及旧址路径 |
+| operator | 七页可读，入口/别名/证据/候选/提案/异议可写 | 现场采集旧门牌与提出归并 |
+| supervisor | 全部日常动作及复核、公示、生效、回滚、演示时钟、质检抽查与同址判定 | 签核异议、更新服务目录和凭书证盲判 |
+| viewer | 七页只读，后端所有写接口拒绝 | 查看公示期限、抽查进度及旧址路径 |
 
 `.env.example` 包含 COMPOSE_PROJECT_NAME、FRONTEND_PORT、BACKEND_PORT、DB_PORT、DOCKER_SUBNET、JWT_SECRET，生产部署应更换演示凭据。卷保存MySQL、Redis和worker心跳。中文和空格路径已实测。
 
-## 六个模块与状态
+## 七个模块与状态
 
 1. 实地门牌：Entrance记录唯一采集号、街道、门牌数字与经纬度，坐标更正留审计；不因文字近似删除独立入口。
 2. 别名书证：Alias归属入口，Evidence有唯一文件/照片参考号和现场核验说明；来源无证据禁止公示。
@@ -27,6 +27,7 @@ docker compose up -d --build --wait
 4. 住户异议：Objection open→resolved，核定维持归并或split拆分；拆分把提案置rejected、公示withdrawn，仍保留两个入口。
 5. 改址公示：Proposal draft→public→active，Notice至少3天；期限未满、异议未结、来源已有有效映射、映射成环均拒绝生效。
 6. 服务目录：Redirect保存source→target及原提案，逐跳解析canonical。回滚置rolled_back并保留原因、公示和原目标；不是删除历史。所有图写操作先锁Registry父资源，防止并发生效绕过单来源约束或无环检查。
+7. 归并质检：QcRound以创建时最新就绪匹配为参照，冻结全部同街同号门牌对框架，按街道×已推荐/未推荐分层抽样（层总体即分母），重跑匹配或增补别名都不改换样本与分母。两名核定员各凭书证盲判同址，判完才揭晓原相似度与推荐情况；并发交卷由Registry锁串行，同一核定员重试不重复计票；两人分歧交未投票的第三人裁决。错合率（已推荐组判异址）与漏合率（未推荐组判同址）按抽中机会（层总体÷抽中数）折算，未判完门牌对单列不计入比率。
 
 ## 一天的剧本
 
@@ -38,6 +39,7 @@ docker compose up -d --build --wait
 6. 使用明确的演示时钟推进到11月21日09:00；未处理Y031仍无法生效。
 7. 核定员现场核验后维持归并，公示生效，CQ-018-B解析到CQ-018-A。
 8. 发现入口独立则回滚映射，旧入口恢复自身canonical，原映射及原因仍可查；异议split可在生效前直接撤提案。
+9. 核定员创建QC-01质检抽查：冻结全部同街同号门牌对框架（长桥路3对、青石街3对、河滨路1对），按街道×推荐/未推荐分层抽样；supervisor与supervisor2凭书证各自盲判，判完揭晓原分与推荐情况，分歧由supervisor3裁决；核验页按抽中机会折算错合率与漏合率，未判完的单列。
 
 演示时钟保存在Registry，仅核定员可单向推进并留审计，不会依赖机器日期令种子失效。
 
@@ -49,9 +51,9 @@ docker compose up -d --build --wait
 
 ## 代码与开发
 
-Python FastAPI / SQLAlchemy / MySQL8 / Redis7 / scikit-learn；原生HTML/CSS/JS ES modules + Nginx。backend/src/models.py为独立关系模型，schemas.py严格类型与长度范围；entrance_service、proposal_service、publication_service、directory_service分别承担现场、异议、期限、无环图规则。routes.py做JWT角色入口；worker.py运行真实计算；common.py管Registry锁与审计。middlewares.py含RequestTrace/Recovery两中间件。
+Python FastAPI / SQLAlchemy / MySQL8 / Redis7 / scikit-learn；原生HTML/CSS/JS ES modules + Nginx。backend/src/models.py为独立关系模型，schemas.py严格类型与长度范围；entrance_service、proposal_service、publication_service、directory_service、qc_service分别承担现场、异议、期限、无环图、抽查盲判与折算规则。routes.py做JWT角色入口；worker.py运行真实计算；common.py管Registry锁与审计。middlewares.py含RequestTrace/Recovery两中间件。
 
-frontend/src/pages下六页与业务模块对应；components/registry.js共享门牌牌面、状态徽标、标题和表单；utils/api.js管理会话与聚合store，utils/format.js管转义与数据类型。角色和状态枚举分别在backend/src/constants.py、frontend/src/constants.js（模型中持久化值同义）。
+frontend/src/pages下七页与业务模块对应；components/registry.js共享门牌牌面、状态徽标、标题和表单；utils/api.js管理会话与聚合store，utils/format.js管转义与数据类型。角色和状态枚举分别在backend/src/constants.py、frontend/src/constants.js（模型中持久化值同义）。
 
 ```bash
 docker compose exec -T backend python scripts/seed_demo.py
@@ -64,6 +66,6 @@ seed自然键仅补缺，已有坐标、提案、公示、映射和用户编辑�
 
 ## 已知边界
 
-单街道模拟，不验证真实地籍权属；门牌中文数字规范仅支持1–99常见写法，不是全国地址标准化引擎。证据是文本文件参考号，不上传照片文件；未提供居民实名认证和外部目录推送。全图Registry锁优先小规模正确性，吞吐有限。BLPOP是轻量队列，进程在弹出后被杀不会自动重投；可新建匹配任务。时间按演示本地无时区ISO工作时钟处理；create_all不含生产迁移。
+单街道模拟，不验证真实地籍权属；门牌中文数字规范仅支持1–99常见写法，不是全国地址标准化引擎。证据是文本文件参考号，不上传照片文件；未提供居民实名认证和外部目录推送。全图Registry锁优先小规模正确性，吞吐有限。BLPOP是轻量队列，进程在弹出后被杀不会自动重投；可新建匹配任务。质检盲审遮蔽质检接口与核验页中的原分、推荐情况和他人判定，不撤回归并候选页既有的相似度展示。时间按演示本地无时区ISO工作时钟处理；create_all不含生产迁移。
 
 License: MIT（本项目新增代码）。

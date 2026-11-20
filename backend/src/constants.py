@@ -1,2 +1,5 @@
 ROLES=('operator','supervisor','viewer')
 PROPOSAL_STATES=('draft','public','active','rejected','rolled_back')
+QC_ROUND_STATES=('collecting','closed')
+QC_PAIR_STATES=('pending','arbitration','decided')
+QC_VERDICTS=('same','different')

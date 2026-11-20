@@ -24,3 +24,7 @@ class ReasonIn(Input):
  reason:str=Field(min_length=8,max_length=500)
 class ClockIn(Input):
  now:str;reason:str=Field(min_length=8,max_length=500)
+class QcRoundIn(Input):
+ code:str=Field(min_length=2,max_length=40);fraction:float=Field(default=0.5,gt=0,le=1);seed:int=Field(default=42,ge=0,le=2147483647)
+class QcVoteIn(Input):
+ verdict:Literal['same','different'];note:str=Field(min_length=8,max_length=500)

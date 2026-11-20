@@ -36,3 +36,14 @@ class Redirect(Base):
 class Audit(Base):
  __tablename__='audit'
  id=Column(Integer,primary_key=True);actor=Column(String(160),nullable=False);action=Column(String(100),nullable=False);detail=Column(String(500),nullable=False)
+class QcRound(Base):
+ __tablename__='qc_rounds'
+ id=Column(Integer,primary_key=True);code=Column(String(40),unique=True,nullable=False);run_id=Column(Integer,ForeignKey('match_runs.id'),nullable=False);seed=Column(Integer,nullable=False);fraction=Column(Float,nullable=False);state=Column(String(20),default='collecting',nullable=False);created=Column(String(32),nullable=False);frame=Column(JSON,nullable=False)
+class QcPair(Base):
+ __tablename__='qc_pairs'
+ id=Column(Integer,primary_key=True);round_id=Column(Integer,ForeignKey('qc_rounds.id'),nullable=False);street=Column(String(80),nullable=False);number=Column(Integer,nullable=False);source_id=Column(Integer,ForeignKey('entrances.id'),nullable=False);target_id=Column(Integer,ForeignKey('entrances.id'),nullable=False);recommended=Column(Integer,nullable=False);similarity=Column(Float,nullable=False);weight=Column(Float,nullable=False);state=Column(String(20),default='pending',nullable=False);verdict=Column(String(20),default='')
+ __table_args__=(UniqueConstraint('round_id','source_id','target_id'),)
+class QcVote(Base):
+ __tablename__='qc_votes'
+ id=Column(Integer,primary_key=True);pair_id=Column(Integer,ForeignKey('qc_pairs.id'),nullable=False);adjudicator=Column(String(160),nullable=False);verdict=Column(String(20),nullable=False);note=Column(String(500),default='');created=Column(String(32),nullable=False)
+ __table_args__=(UniqueConstraint('pair_id','adjudicator'),)
